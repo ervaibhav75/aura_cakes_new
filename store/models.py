@@ -1,9 +1,20 @@
 
 from django.db import models
 from django.urls import reverse
-
 from category.models import Category
 # Create your models here.
+
+
+def is_product_added(self, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart_object = Cart.objects.get(cart_id=_cart_id(self.request))
+    cart_item_object = CartItem.objects.get(
+        product=product, cart_id=cart_object)
+
+    if cart_item_object:
+        return True
+    else:
+        return False
 
 
 class Product(models.Model):
