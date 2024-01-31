@@ -30,7 +30,7 @@ def cart(request):
                    }
 
     except Cart.DoesNotExist:
-        pass
+        return render(request, 'store/cart.html', {})
     return render(request, 'store/cart.html', context)
 
 
@@ -77,4 +77,3 @@ def delete_from_cart(request, product_id):
 
     cart_item_object.delete()
     return redirect('cart')
-
